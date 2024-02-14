@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/3403fd1de3.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <header id="homeid">
+      <h1>The Eat</h1>
+    </header>
+    <div class="container">
+      <div class="form-box">
+        <h1 id="title">Sign Up</h1>
+        <form>
+          <div
+            class="input-group"
+            method="post"
+            name="form"
+            onsubmit="return validated()"
+          >
+            <div class="input-field" id="nameField">
+              <i class="fa-solid fa-user"></i>
+              <input type="text" placeholder="Name" required />
+            </div>
+
+            <div class="input-field" id="emailField">
+              <i class="fa-solid fa-envelope"></i>
+              <input type="email" placeholder="Email" required />
+            </div>
+
+            <div class="input-field" id="passwordField">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" placeholder="Password" required />
+            </div>
+            <p>Lost password <a href="lost_password.html">Click Here!</a></p>
+          </div>
+          <div class="btn-field">
+            <button type="button" id="signupBtn">sign up</button>
+            <button
+              onclick="login()"
+              type="button"
+              id="signinBtn"
+              class="disable"
+            >
+              sign in
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      var signupBtn = document.getElementById("signupBtn");
+      var signinBtn = document.getElementById("signinBtn");
+      var nameField = document.getElementById("nameField");
+      var title = document.getElementById("title");
+      var email = document.getElementById("emailField");
+      var password = document.getElementById("passwordField");
+
+      signinBtn.onclick = function () {
+        nameField.style.maxHeight = 0;
+        title.innerHTML = "Sign In";
+        signupBtn.classList.add("disable");
+        signinBtn.classList.remove("disable");
+      };
+      signupBtn.onclick = function () {
+        nameField.style.maxHeight = "60px";
+        title.innerHTML = "Sign Up";
+        signupBtn.classList.remove("disable");
+        signinBtn.classList.add("disable");
+
+        // Call the Register() method
+        Register();
+
+        // Redirect to products.html
+        window.location.href = "products.html";
+      };
+    </script>
+  </body>
+
+  <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js"></script>
+  <script src="index.js"></script>
+</html>
